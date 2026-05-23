@@ -7,6 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
 import styles from "./CaseStudy.module.css";
 import type { Project } from "@/lib/projects";
+import { AnimatedCounter } from "@/components/AnimatedCounter/AnimatedCounter";
 
 function InstagramIcon() {
   return (
@@ -115,6 +116,20 @@ export function CaseStudyPageClient({ project }: { project: Project }) {
           <p className={styles.synopsisText}>{synopsis}</p>
           <p className={styles.creditsText}>{credits}</p>
         </div>
+
+        {/* Metrics Grid with Animated Numbers */}
+        {(language === "pt" ? project.metricsPt : project.metricsEn)?.length > 0 && (
+          <div className={styles.metricsGrid}>
+            {(language === "pt" ? project.metricsPt : project.metricsEn).map((metric, idx) => (
+              <div key={idx} className={styles.metricCard}>
+                <h3 className={styles.metricValue}>
+                  <AnimatedCounter value={metric.value} />
+                </h3>
+                <p className={styles.metricLabel}>{metric.label}</p>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Hint */}
         <div className={styles.backHint}>
