@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  height: 300vh; /* 3x viewport para scroll-scrub longo */
+  height: 100vh;
   background-color: var(--bg-primary);
 }
 
@@ -99,6 +99,6 @@
 }
 
 @media (max-width: 768px) {
-  .section { height: 150vh; }
+  .section { height: 100vh; }
   .title { font-size: var(--text-3xl); }
 }
