@@ -28,7 +28,6 @@ export default function RootLayout({
 
         <LanguageProvider>
           <DynamicThemeProvider>
-            <MagneticCursor />
             <Nav />
             {children}
             <Footer />
