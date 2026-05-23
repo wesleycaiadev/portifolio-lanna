@@ -23,23 +23,9 @@ export default function Home() {
   useEffect(() => {
     if (!preloaderComplete) return;
 
-    // Efeito cinemático na imagem de fundo de Lanna (Grayscale -> Color + Zoom out sutil)
-    const bgTrigger = gsap.fromTo(
-      aboutImageRef.current,
-      { filter: "grayscale(100%) brightness(0.2)", scale: 1.1 },
-      {
-        filter: "grayscale(0%) brightness(0.65)",
-        scale: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: aboutSectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      }
-    );
-
+    // Efeito cinemático na imagem de fundo de Lanna removido para deixar cor viva
+    // CSS no Home.module.css agora cuida do hover e brilho
+    
     // Efeito de reveal em cascata (stagger) suave no texto quando entra na viewport
     const textChildren = aboutContentRef.current?.children;
     let textTrigger: gsap.core.Tween | null = null;
@@ -63,8 +49,6 @@ export default function Home() {
     }
 
     return () => {
-      bgTrigger.scrollTrigger?.kill();
-      bgTrigger.kill();
       if (textTrigger) {
         textTrigger.scrollTrigger?.kill();
         textTrigger.kill();

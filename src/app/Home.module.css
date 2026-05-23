@@ -25,6 +25,12 @@
   object-position: top center;
   border-radius: var(--radius-lg);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: transform var(--duration-slow) var(--ease-cinematic), filter var(--duration-slow) var(--ease-cinematic);
+}
+
+.aboutBackgroundWrapper:hover .aboutBgImage {
+  transform: scale(1.08);
+  filter: brightness(1.1) contrast(1.05);
 }
 
 /* Removido o overlay escuro pois a foto agora é lado a lado */
