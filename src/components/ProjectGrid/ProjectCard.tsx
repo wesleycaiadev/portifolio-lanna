@@ -27,7 +27,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     setAccentFromRgb(project.color);
     shouldPlayRef.current = true;
     
-    if (videoRef.current) {
+    if (videoRef.current && project.videoPreview) {
       videoRef.current.currentTime = 0;
       isPlayingPendingRef.current = true;
       
@@ -94,15 +94,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         />
 
         {/* Vídeo de Preview Cinematográfico nativo (carrega sob demanda, ultra-fluido) */}
-        <video
-          ref={videoRef}
-          src={project.videoPreview}
-          className={`${styles.hoverVideo} ${isHovered ? styles.videoVisible : ""}`}
-          loop
-          muted
-          playsInline
-          preload="none"
-        />
+        {project.videoPreview && (
+          <video
+            ref={videoRef}
+            src={project.videoPreview}
+            className={`${styles.hoverVideo} ${isHovered ? styles.videoVisible : ""}`}
+            loop
+            muted
+            playsInline
+            preload="none"
+          />
+        )}
 
         {/* Overlay Escuro com Vinheta de Cinema */}
         <div className={`${styles.overlay} ${isHovered ? styles.overlayVisible : ""}`} />

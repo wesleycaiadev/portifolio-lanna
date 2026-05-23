@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useTheaterMode } from "@/hooks/useTheaterMode";
 import { useTheme } from "@/components/DynamicTheme/DynamicTheme";
 import { useLanguage } from "@/context/LanguageContext";
+import Image from "next/image";
 import styles from "./CaseStudy.module.css";
 import type { Project } from "@/lib/projects";
 
@@ -46,15 +47,26 @@ export function CaseStudyPageClient({ project }: { project: Project }) {
     <main style={{ backgroundColor: "var(--bg-primary)", minHeight: "100vh" }}>
       {/* Hero */}
       <section className={styles.heroSection}>
-        <video
-          ref={videoRef}
-          src={project.videoFull}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className={styles.heroVideo}
-        />
+        {project.videoFull ? (
+          <video
+            ref={videoRef}
+            src={project.videoFull}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={styles.heroVideo}
+          />
+        ) : (
+          <Image
+            src={project.thumbnail}
+            alt={title}
+            fill
+            className={styles.heroVideo}
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        )}
         <div className={styles.heroGradient} />
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>{title}</h1>
