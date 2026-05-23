@@ -4,7 +4,6 @@
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  mix-blend-mode: difference;
   transition:
     opacity var(--duration-slow) var(--ease-cinematic),
     transform var(--duration-slow) var(--ease-cinematic);
@@ -16,6 +15,7 @@
   justify-content: space-between;
   padding: var(--space-6) var(--margin-cinematic);
   max-width: 100%;
+  mix-blend-mode: difference;
 }
 
 /* ── Logo ── */
