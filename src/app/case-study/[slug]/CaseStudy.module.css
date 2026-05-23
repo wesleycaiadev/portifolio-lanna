@@ -1,0 +1,87 @@
+/* Hero section - fullscreen with video background */
+.heroSection { position: relative; height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.heroVideo { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+.heroGradient { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.3) 40%, rgba(5,5,5,0.1) 60%, rgba(5,5,5,0.5) 100%); }
+.heroContent { position: relative; z-index: 10; text-align: center; padding: var(--space-4); }
+.heroTitle { font-family: var(--font-display); font-size: var(--text-hero); color: var(--text-primary); line-height: 0.9; text-transform: uppercase; margin-bottom: var(--space-3); }
+.heroSubtitle { font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-secondary); letter-spacing: var(--tracking-ultra); text-transform: uppercase; }
+
+/* Content section */
+.contentSection { max-width: 900px; margin: 0 auto; padding: var(--space-24) var(--margin-cinematic); }
+
+/* Body text - the real project description */
+.bodyText { font-family: var(--font-body); font-size: var(--text-lg); color: var(--text-secondary); line-height: var(--leading-relaxed); font-weight: 300; margin-bottom: var(--space-12); white-space: pre-line; }
+
+/* CTA text - "Acesse o conteúdo..." */
+.ctaText { font-family: var(--font-body); font-size: var(--text-base); color: var(--text-tertiary); text-align: center; margin-bottom: var(--space-12); font-style: italic; }
+
+/* Instagram grid */
+.instagramGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); margin-bottom: var(--space-16); }
+
+/* Individual Instagram link button with glassmorphism */
+.instagramLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(240, 237, 232, 0.08);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-cinematic);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.instagramLink:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.instagramIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(240, 237, 232, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--duration-normal) var(--ease-cinematic);
+}
+
+.instagramLink:hover .instagramIcon { background: var(--accent); }
+.instagramLink:hover .instagramIcon svg { color: var(--bg-primary); }
+
+.instagramLabel { font-family: var(--font-body); font-size: var(--text-base); color: var(--text-primary); font-weight: 400; transition: color var(--duration-normal) var(--ease-cinematic); }
+.instagramLink:hover .instagramLabel { color: var(--accent); }
+
+/* Divider line */
+.divider { width: 60px; height: 1px; background: var(--accent-dim); margin: var(--space-8) auto; }
+
+/* Synopsis section - secondary info */
+.synopsisSection { margin-top: var(--space-16); }
+.sectionLabel { font-family: var(--font-display); font-size: var(--text-xl); color: var(--text-primary); text-transform: uppercase; margin-bottom: var(--space-4); }
+.synopsisText { font-family: var(--font-body); font-size: var(--text-base); color: var(--text-tertiary); line-height: var(--leading-relaxed); font-weight: 300; }
+
+/* Credits */
+.creditsText { font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-tertiary); font-weight: 300; margin-top: var(--space-4); }
+
+/* Back button */
+.backHint { text-align: center; margin-top: var(--space-32); }
+.backHintText { color: var(--text-tertiary); font-size: var(--text-sm); font-family: var(--font-body); opacity: 0.7; }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .heroTitle { font-size: var(--text-3xl); }
+  .contentSection { padding: var(--space-16) var(--space-4); }
+  .instagramGrid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .bodyText { font-size: var(--text-base); }
+}
+
+@media (max-width: 480px) {
+  .heroTitle { font-size: var(--text-2xl); }
+  .instagramLink { padding: var(--space-3) var(--space-4); }
+}

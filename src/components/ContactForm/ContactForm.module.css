@@ -1,0 +1,109 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.successContainer {
+  text-align: center;
+  align-items: center;
+}
+
+.progress {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-12);
+}
+
+.progressDot {
+  flex: 1;
+  height: 2px;
+  background-color: rgba(240, 237, 232, 0.1);
+  transition: background-color var(--duration-normal) var(--ease-cinematic);
+}
+
+.progressDotActive {
+  background-color: var(--accent);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-items: flex-start;
+}
+
+.questionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.questionText {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-primary);
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(240, 237, 232, 0.2);
+  padding: var(--space-2) 0;
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--accent);
+  outline: none;
+  transition: border-color var(--duration-normal) var(--ease-cinematic);
+  resize: none;
+}
+
+.input:focus {
+  border-bottom-color: var(--accent);
+}
+
+.input::placeholder {
+  color: rgba(240, 237, 232, 0.2);
+}
+
+.nextBtn {
+  align-self: flex-end;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  letter-spacing: var(--tracking-wide);
+  color: var(--bg-primary);
+  background-color: var(--accent);
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-full);
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.nextBtn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.nextBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* Success State */
+.successTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  color: var(--accent);
+  line-height: var(--leading-tight);
+}
+
+.successText {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 500px;
+}

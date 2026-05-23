@@ -1,0 +1,149 @@
+/* ═══════════════════════════════════════════════════════
+   GLOBALS — Reset & Base
+   Lanna Anjos · Cinematic Brutalism
+   ═══════════════════════════════════════════════════════ */
+
+@import "./tokens.css";
+@import "./animations.css";
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: auto; /* GSAP controla o scroll */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: var(--leading-normal);
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  transition: background-color var(--duration-glacial) var(--ease-cinematic);
+}
+
+body.custom-cursor-active {
+  cursor: none; /* Custom cursor assume */
+}
+
+/* Restaura cursor em mobile */
+@media (hover: none), (pointer: coarse) {
+  body.custom-cursor-active { cursor: auto; }
+}
+
+/* ── Links ── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body.custom-cursor-active a {
+  cursor: none;
+}
+
+/* ── Imagens & Mídia ── */
+img, video, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Botões ── */
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+body.custom-cursor-active button {
+  cursor: none;
+}
+
+/* ── Listas ── */
+ul, ol {
+  list-style: none;
+}
+
+/* ── Seleção ── */
+::selection {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ── Film Grain Overlay (sutil) ── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: grain 0.5s steps(1) infinite;
+}
+
+/* ── Tipografia helpers ── */
+.font-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-tight);
+}
+
+.font-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: var(--tracking-normal);
+}
+
+/* ── Teatro Mode (aplicado via JS) ── */
+body.theater-active {
+  overflow: hidden;
+}
+
+body.theater-active .nav-container {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+/* ── Transição de tema dinâmico ── */
+:root {
+  transition:
+    --accent-h var(--duration-glacial) var(--ease-smooth),
+    --accent-s var(--duration-glacial) var(--ease-smooth),
+    --accent-l var(--duration-glacial) var(--ease-smooth);
+}

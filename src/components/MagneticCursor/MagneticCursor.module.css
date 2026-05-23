@@ -1,0 +1,113 @@
+.dot,
+.ring,
+.label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* ── Dot ── */
+.dot {
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  transition:
+    width 0.4s var(--ease-cinematic),
+    height 0.4s var(--ease-cinematic),
+    margin 0.4s var(--ease-cinematic),
+    background-color 0.4s var(--ease-cinematic),
+    opacity 0.3s ease;
+}
+
+/* ── Ring ── */
+.ring {
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
+  border-radius: 50%;
+  border: 1px solid rgba(240, 237, 232, 0.4);
+  mix-blend-mode: difference;
+  transition:
+    width 0.5s var(--ease-cinematic),
+    height 0.5s var(--ease-cinematic),
+    margin 0.5s var(--ease-cinematic),
+    border-color 0.4s var(--ease-cinematic),
+    opacity 0.3s ease;
+}
+
+/* ── Label ── */
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-ultra);
+  color: var(--text-primary);
+  margin-left: 24px;
+  margin-top: -8px;
+  mix-blend-mode: difference;
+}
+
+.labelVisible {
+  opacity: 1;
+}
+
+/* ── Variantes ── */
+
+/* Hover: ring expande */
+.hover.dot {
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  margin-top: -2px;
+}
+
+.hover.ring {
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  margin-top: -30px;
+  border-color: var(--accent);
+}
+
+/* Play: dot desaparece, ring vira grande e sólido */
+.play.dot {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.play.ring {
+  width: 80px;
+  height: 80px;
+  margin-left: -40px;
+  margin-top: -40px;
+  background-color: rgba(240, 237, 232, 0.08);
+  border-color: rgba(240, 237, 232, 0.6);
+}
+
+/* Drag */
+.drag.ring {
+  width: 72px;
+  height: 72px;
+  margin-left: -36px;
+  margin-top: -36px;
+  border-style: dashed;
+}
+
+/* Hidden: cursor fora da janela */
+.hidden.dot,
+.hidden.ring {
+  opacity: 0 !important;
+}
