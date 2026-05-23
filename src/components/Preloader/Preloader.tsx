@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "./Preloader.module.css";
-
 import { useLanguage } from "@/context/LanguageContext";
 
 interface PreloaderProps {
@@ -14,16 +13,20 @@ export function Preloader({ onComplete }: PreloaderProps) {
   const [isExiting, setIsExiting] = useState(false);
   const { t } = useLanguage();
 
-  const handleEnter = () => {
-    if (isExiting) return;
-    setIsExiting(true);
+  useEffect(() => {
+    // Inicia a saída automaticamente após 2.5s (tempo da animação inicial)
+    const exitTimer = setTimeout(() => {
+      setIsExiting(true);
+      
+      // Fallback de segurança: desmonta 1 segundo depois de começar a sair
+      setTimeout(() => {
+        onComplete();
+      }, 1000);
+      
+    }, 2500);
 
-    // Garantia de segurança dupla: desmonta o preloader após 1 segundo
-    // mesmo que o navegador atrase ou falte o evento onTransitionEnd
-    setTimeout(() => {
-      onComplete();
-    }, 1000);
-  };
+    return () => clearTimeout(exitTimer);
+  }, [onComplete]);
 
   return (
     <div
@@ -59,15 +62,6 @@ export function Preloader({ onComplete }: PreloaderProps) {
         <div className={styles.barTrack}>
           <div className={styles.barFill} />
         </div>
-
-        <button
-          className={styles.enterBtn}
-          onClick={handleEnter}
-          data-cursor="hover"
-        >
-          <span className={styles.pulse} />
-          {t("enterBtn")}
-        </button>
       </div>
     </div>
   );
